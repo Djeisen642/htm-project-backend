@@ -78,5 +78,29 @@ router.post('/', async function(req, res) {
   }
 });
 
+router.get('/collaborators', async (req, res) => {
+  try {
+    let collaborators = await models.User.findAll({
+      attributes: ['id'],
+      include: [{
+        model: models.Person
+      }, {
+        required: true,
+        model: models.User,
+        as: 'Initiator',
+        attributes: ['id'],
+        through: 'Collaborators',
+      }]
+    });
+
+    collaborators = collaborators.map(collaborator => collaborator.toJSON());
+    collaborators.forEach(collaborator => collaborator.Person.avatar = collaborator.Person.avatar && collaborator.Person.avatar.toString());
+    res.json(collaborators);
+  } catch (e) {
+    console.log(e);
+    res.json({error: e});
+  }
+});
+
 
 module.exports = router;

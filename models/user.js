@@ -14,6 +14,19 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false
       }
     });
+
+    models.User.belongsToMany(models.User, {
+      as: 'Initiator',
+      through: 'Collaborators',
+      foreignKey: 'InitiatorId',
+      onDelete: 'CASCADE'
+    });
+    models.User.belongsToMany(models.User, {
+      as: 'Collaborator',
+      through: 'Collaborators',
+      foreignKey: 'CollaboratorId',
+      onDelete: 'CASCADE'
+    });
   };
 
   User.prototype.checkPassword = function(password) {

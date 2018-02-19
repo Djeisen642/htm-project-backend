@@ -73,7 +73,7 @@ module.exports = (sequelize, DataTypes) => {
       through: 'MentorGuest',
       foreignKey: 'MentorId',
       onDelete: 'CASCADE'
-    })
+    });
     models.Person.hasOne(models.User);
   }
 
