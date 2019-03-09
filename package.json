@@ -3,9 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node test/seed && node ./bin/www",
+    "start": "node seed/seed && node ./bin/www",
     "dev": "node --inspect ./bin/www",
-    "mon": "nodemon --inspect ./bin/www"
+    "mon": "nodemon --inspect ./bin/www",
+    "test": "jest"
   },
   "apidoc": {
     "title": "HTM Project API"
@@ -36,8 +37,12 @@
     "eslint": "^5.13.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jest": "^22.3.0",
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-promise": "^4.0.1",
-    "eslint-plugin-standard": "^4.0.0"
+    "eslint-plugin-standard": "^4.0.0",
+    "jest": "^24.3.1",
+    "sequelize-fixtures": "^0.9.0",
+    "supertest": "^4.0.0"
   }
 }

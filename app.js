@@ -33,7 +33,11 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.use(session({ secret: 'someAwesomeTribelySecret' }))
+app.use(session({
+  secret: 'someAwesomeTribelySecret',
+  resave: true,
+  saveUninitialized: true
+}))
 app.use(passport.initialize())
 app.use(passport.session())
 
